@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Basic parameters",
+        "description": "These parameters are essential for the analysis.",
+        "hidden": false,
+        "parameters": [
+            "Reads",
+            "Transcriptome.Index",
+            "Library.Type",
+            "Sampling",
+            "seqBias",
+            "gcBias",
+            "posBias"
+        ]
+    },
+    {
+        "name": "Advanced parameters",
+        "description": "Additional parameters with standard defaults.",
+        "hidden": false,
+        "parameters": [
+            "N.Sampling",
+            "Mimic.Bowtie",
+            "Recover.Orphans",
+            "Hard.Filter",
+            "Allow.Dovetail",
+            "Dump.EQ",
+            "reduce.GC.Memory",
+            "Range.Factorization",
+            "Range.Factorization.Bins",
+            "biasSpeedSamp",
+            "biasSpeedSamp.Factor"
+        ]
+    }
+]
