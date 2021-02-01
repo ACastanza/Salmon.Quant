@@ -1,7 +1,7 @@
 #salmon.quant
-#Thu Nov 26 07:45:19 UTC 2020
+#Mon Feb 01 23:32:55 UTC 2021
 JVMLevel=
-LSID=urn\:lsid\:8080.gpserver.ip-172-31-26-71.ip-172-31-26-71.ec2.internal\:genepatternmodules\:2991\:3
+LSID=urn\:lsid\:8080.gpserver.ip-172-31-26-71.ip-172-31-26-71.ec2.internal\:genepatternmodules\:2991\:3.1
 author=Anthony S. Castanza;UCSD-MesirovLab
 categories=rna-seq;rna-seq;rna-seq
 commandLine=<libdir>salmon_quant.sh -r <Reads> -i <Transcriptome.Index> -l <Library.Type> -e <Sampling> -n <N.Sampling> -s <seqBias> -g <gcBias> -p <posBias> -t <Mimic.Bowtie> -o <Recover.Orphans> -h <Hard.Filter> -d <Allow.Dovetail> -q <Dump.EQ> -m <reduce.GC.Memory> -f <Range.Factorization> -c <Range.Factorization.Bins> -b <biasSpeedSamp> -a <biasSpeedSamp.Factor> -j <job.cpuCount>
@@ -15,7 +15,7 @@ os=any
 p10_MODE=
 p10_TYPE=TEXT
 p10_default_value=false
-p10_description=Perform orphan "rescue" for reads. That is, if mappings are discovered for only one end of a fragment, or if the mappings for the ends of the fragment don?t fall on the same transcript, then this flag will cause salmon to look upstream or downstream of the discovered mapping (anchor) for a match for the opposite end of the given fragment.
+p10_description=Perform orphan "rescue" for reads. That is, if mappings are discovered for only one end of a fragment, or if the mappings for the ends of the fragment don't fall on the same transcript, then this flag will cause salmon to look upstream or downstream of the discovered mapping (anchor) for a match for the opposite end of the given fragment.
 p10_fileFormat=
 p10_flag=-o
 p10_name=Recover.Orphans
@@ -41,7 +41,7 @@ p11_value=true\=TRUE;false\=FALSE
 p12_MODE=
 p12_TYPE=TEXT
 p12_default_value=false
-p12_description=Dovetailing mappings and alignments are considered discordant and discarded by default ? this is the same behavior that is adopted by default in Bowtie2. If you wish to consider dovetailing mappings as concordant (the previous behavior), you can do so by setting Allow.Dovetail to true.
+p12_description=Dovetailing mappings and alignments are considered discordant and discarded by default - this is the same behavior that is adopted by default in Bowtie2. If you wish to consider dovetailing mappings as concordant (the previous behavior), you can do so by setting Allow.Dovetail to true.
 p12_fileFormat=
 p12_flag=-d
 p12_name=Allow.Dovetail
@@ -93,7 +93,7 @@ p15_value=true\=TRUE;false\=FALSE
 p16_MODE=
 p16_TYPE=Integer
 p16_default_value=4
-p16_description=Positive integer that determines fidelity of range factorization. The larger x, the closer the factorization to the un-factorized likelihood, but the larger the resulting number of equivalence classes. A value of 1 corresponds to salmon?s traditional rich equivalence classes. We recommend 4 (default) as a reasonable parameter for this option (it is what was used in the range-factorization paper).\n<br>\nIgnored if Range.Factorization \= FALSE
+p16_description=Positive integer that determines fidelity of range factorization. The larger x, the closer the factorization to the un-factorized likelihood, but the larger the resulting number of equivalence classes. A value of 1 corresponds to salmon's traditional rich equivalence classes. We recommend 4 (default) as a reasonable parameter for this option (it is what was used in the range-factorization paper).\n<br>\nIgnored if Range.Factorization \= FALSE
 p16_fileFormat=
 p16_flag=-c
 p16_name=Range.Factorization.Bins
@@ -211,7 +211,7 @@ p6_value=true\=TRUE;false\=FALSE
 p7_MODE=
 p7_TYPE=TEXT
 p7_default_value=true
-p7_description=Salmon will construct a model of a position-specific fragment start distribution. This is meant to model non-uniform coverage biases that are sometimes present in RNA-seq data (e.g. 5? or 3? positional bias).
+p7_description=Salmon will construct a model of a position-specific fragment start distribution. This is meant to model non-uniform coverage biases that are sometimes present in RNA-seq data (e.g. 5' or 3' positional bias).
 p7_fileFormat=
 p7_flag=-p
 p7_name=posBias
@@ -252,4 +252,4 @@ quality=development
 taskDoc=
 taskType=rna-seq
 userid=acastanza
-version=
+version=Update to salmon 1.4.0
