@@ -4,6 +4,8 @@ set -e
 
 abort()
 {
+rm -rf salmon_index
+
     echo >&2 '
 ***************
 *** ABORTED ***
@@ -138,7 +140,7 @@ cp $outdir/quant.sf $outdir.quant.sf
 tar -czvf $outdir.salmon_quant.tar.gz -C $outdir .
 rm -rf $outdir
 
-    echo "--Done." ;
+    echo $outdir": Done." ;
  done
 else
 echo "Count of Read 1 ("${#R1[@]}") didn't match count of Read 2 ("${#R2[@]}")"
