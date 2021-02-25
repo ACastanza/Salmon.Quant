@@ -249,7 +249,7 @@ p9_type=java.lang.String
 p9_value=off\=off;BT2\=mimicBT2;Strict\=mimicStrictBT2
 privacy=public
 quality=development
-taskDoc=salmon.quant.doc
+taskDoc=salmon.quant.pdf
 taskType=rna-seq
 userid=acastanza
 version=Update to salmon 1.4.0
