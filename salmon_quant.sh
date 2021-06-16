@@ -94,7 +94,7 @@ done
 
 if [ "${#R1[@]}" -eq "${#R2[@]}" ]
 then
- for (( i=0; i<"${#R1[@]}"; i++ )); do 
+ for (( i=0; i<"${#R1[@]}"; i++ )); do
 
  outdir=$(basename ${R1[$i]})
  outdir=${outdir/%_R1.fastq.gz}
