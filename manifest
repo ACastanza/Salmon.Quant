@@ -1,7 +1,7 @@
 #Salmon.Quant
 #Mon Feb 01 23:32:55 UTC 2021
 JVMLevel=
-LSID=urn\:lsid\:8080.gpserver.ip-172-31-26-71.ip-172-31-26-71.ec2.internal\:genepatternmodules\:2991\:3.1
+LSID=urn:lsid:genepattern.org:module.analysis:00420:0.1
 author=Anthony S. Castanza;UCSD-MesirovLab
 categories=rna-seq
 commandLine=<libdir>salmon_quant.sh -r <Reads> -i <Transcriptome.Index> -l <Library.Type> -e <Sampling> -n <N.Sampling> -s <seqBias> -g <gcBias> -p <posBias> -t <Mimic.Bowtie> -o <Recover.Orphans> -h <Hard.Filter> -d <Allow.Dovetail> -q <Dump.EQ> -m <reduce.GC.Memory> -f <Range.Factorization> -c <Range.Factorization.Bins> -b <biasSpeedSamp> -a <biasSpeedSamp.Factor> -j <job.cpuCount>
