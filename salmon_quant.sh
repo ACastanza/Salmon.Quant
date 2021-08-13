@@ -175,7 +175,7 @@ if [[ "${#RU[@]}" > 0 ]]; then
  outdir=${outdir/%.fq.gz}
 
     echo -e "\n" ;
-    echo -e "--Input file(s) is:\t""${RU[$i]}" ;
+    echo -e "--Input file is:\t""${RU[$i]}" ;
     echo -e "--Processing in Single-end mode" ;
     echo -e "--Output directory is:\t""${outdir}" ;
     mkdir -p "$outdir" ;
