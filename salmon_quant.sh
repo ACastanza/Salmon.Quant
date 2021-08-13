@@ -88,7 +88,7 @@ done
  mkdir -p salmon_index
  tar -zxvf $index -C salmon_index
 
-# Process Input Files
+# Process Input files
 
  Rall=($(grep -E '.fastq.gz|.fastq.gz|.fq.gz|.fq.gz' $infile | sort))
  R1=($(grep -E '_R1.fastq.gz|_1.fastq.gz|_R1.fq.gz|_1.fq.gz' $infile | sort))
@@ -109,8 +109,9 @@ done
 
 # Begin Sample Quantification
 
-if [[ "${#R1[@]}" -eq "${#R2[@]}" && "${#R1[@]}" > 0 ]]; then
- for (( i=0; i<"${#R1[@]}"; i++ )); do
+if [[ "${#R1[@]}" > 0 ]]; then
+ if [[ "${#R1[@]}" -eq "${#R2[@]}" ]]; then
+ 	for (( i=0; i<"${#R1[@]}"; i++ )); do
 
  outdir=$(basename ${R1[$i]})
  outdir=${outdir/%_R1.fastq.gz}
@@ -159,8 +160,14 @@ tar -czvf $outdir.salmon_quant.tar.gz -C $outdir .
 rm -rf $outdir
 
     echo $outdir": Done." ;
- done
-elif [[ "${#RU[@]}" > 0 ]]; then
+  done
+ else
+ echo "Paired-end files detected but count of Read 1 ("${#R1[@]}") didn't match count of Read 2 ("${#R2[@]}")"
+ echo ""${#RU[@]}" possible single-end file(s) detected"
+ fi
+fi
+
+if [[ "${#RU[@]}" > 0 ]]; then
  for (( i=0; i<"${#RU[@]}"; i++ )); do
 
  outdir=$(basename ${R1[$i]})
@@ -208,9 +215,6 @@ rm -rf $outdir
 
     echo $outdir": Done." ;
  done
-else
-echo "Paired-end files detected but count of Read 1 ("${#R1[@]}") didn't match count of Read 2 ("${#R2[@]}")"
-echo ""${#RU[@]}" possible single-end files detected"
 fi
 
 rm -rf salmon_index
