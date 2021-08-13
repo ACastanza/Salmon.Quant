@@ -167,8 +167,9 @@ rm -rf $outdir
  fi
 fi
 
-if [[ "${#RU[@]}" > 0 ]]; then
- for (( i=0; i<"${#RU[@]}"; i++ )); do
+if [[ "${#R1[@]}" -eq "${#R2[@]}" ]]; then
+ if [[ "${#RU[@]}" > 0 ]]; then
+  for (( i=0; i<"${#RU[@]}"; i++ )); do
 
  outdir=$(basename ${R1[$i]})
  outdir=${outdir/%.fastq.gz}
@@ -215,6 +216,9 @@ rm -rf $outdir
 
     echo $outdir": Done." ;
  done
+fi
+ else
+ echo "Exiting due to mismatched input files"
 fi
 
 rm -rf salmon_index
