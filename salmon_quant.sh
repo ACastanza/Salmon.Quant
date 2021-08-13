@@ -118,6 +118,7 @@ if [[ "${#R1[@]}" > 0 ]]; then
  outdir=${outdir/%_1.fastq.gz}
  outdir=${outdir/%_R1.fq.gz}
  outdir=${outdir/%_1.fq.gz}
+ outdir=${outdir/%_R1_001.fq.gz}
 
     echo -e "\n" ;
     echo -e "--Input file(s) are:\t""${R1[$i]}"",""${R2[$i]}" ;
@@ -171,7 +172,7 @@ if [[ "${#R1[@]}" -eq "${#R2[@]}" ]]; then
  if [[ "${#RU[@]}" > 0 ]]; then
   for (( i=0; i<"${#RU[@]}"; i++ )); do
 
- outdir=$(basename ${R1[$i]})
+ outdir=$(basename ${RU[$i]})
  outdir=${outdir/%.fastq.gz}
  outdir=${outdir/%.fq.gz}
 
