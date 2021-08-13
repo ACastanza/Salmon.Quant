@@ -91,20 +91,21 @@ done
 # Process Input files
 
  Rall=($(grep -E '.fastq.gz|.fastq.gz|.fq.gz|.fq.gz' $infile | sort))
+ Rtest=${Rall[@]}
  R1=($(grep -E '_R1.fastq.gz|_1.fastq.gz|_R1.fq.gz|_1.fq.gz|_R1_' $infile | sort))
  R2=($(grep -E '_R2.fastq.gz|_2.fastq.gz|_R2.fq.gz|_2.fq.gz|_R2_' $infile | sort))
  Rpaired=("${R1[@]}" "${R2[@]}")
 
 for sample in "${Rpaired[@]}"; do
-  for i in "${!Rall[@]}"; do
-    if [[ ${Rall[i]} = $sample ]]; then
-      unset 'Rall[i]'
+  for i in "${!Rtest[@]}"; do
+    if [[ ${Rtest[i]} = $sample ]]; then
+      unset 'Rtest[i]'
     fi
   done
 done
 RU=()
-for i in "${!Rall[@]}"; do
-    RU+=( "${Rall[i]}" )
+for i in "${!Rtest[@]}"; do
+    RU+=( "${Rtest[i]}" )
 done
 
 # Begin Sample Quantification
