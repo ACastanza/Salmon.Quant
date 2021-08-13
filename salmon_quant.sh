@@ -207,7 +207,7 @@ salmon quant \
       --index="salmon_index" \
       --threads=$threads \
       --libType=$lib \
-      -R "${RU[$i]}" \
+      -r "${RU[$i]}" \
       "${params[@]}" \
       --output=$outdir ;
 
