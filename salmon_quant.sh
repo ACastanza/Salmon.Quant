@@ -88,23 +88,43 @@ done
  mkdir -p salmon_index
  tar -zxvf $index -C salmon_index
 
- R1=($(grep -E '_R1.fastq.gz|_1.fastq.gz|_R1.fq.gz|_1.fq.gz' $infile | sort))
- R2=($(grep -E '_R2.fastq.gz|_2.fastq.gz|_R2.fq.gz|_2.fq.gz' $infile | sort))
+# Process Input files
 
+ Rall=($(grep -E '.fastq.gz|.fastq.gz|.fq.gz|.fq.gz' $infile | sort))
+ Rtest=${Rall[@]}
+ R1=($(grep -E '_R1.fastq.gz|_1.fastq.gz|_R1.fq.gz|_1.fq.gz|_R1_' $infile | sort))
+ R2=($(grep -E '_R2.fastq.gz|_2.fastq.gz|_R2.fq.gz|_2.fq.gz|_R2_' $infile | sort))
+ Rpaired=("${R1[@]}" "${R2[@]}")
 
-if [ "${#R1[@]}" -eq "${#R2[@]}" ]
-then
- for (( i=0; i<"${#R1[@]}"; i++ )); do
+for sample in "${Rpaired[@]}"; do
+  for i in "${!Rtest[@]}"; do
+    if [[ ${Rtest[i]} = $sample ]]; then
+      unset 'Rtest[i]'
+    fi
+  done
+done
+RU=()
+for i in "${!Rtest[@]}"; do
+    RU+=( "${Rtest[i]}" )
+done
+
+# Begin Sample Quantification
+
+if [[ "${#R1[@]}" > 0 ]]; then
+ if [[ "${#R1[@]}" -eq "${#R2[@]}" ]]; then
+ 	for (( i=0; i<"${#R1[@]}"; i++ )); do
 
  outdir=$(basename ${R1[$i]})
  outdir=${outdir/%_R1.fastq.gz}
  outdir=${outdir/%_1.fastq.gz}
  outdir=${outdir/%_R1.fq.gz}
  outdir=${outdir/%_1.fq.gz}
+ outdir=${outdir/%_R1_001.fq.gz}
 
     echo -e "\n" ;
-    echo -e "--Input file(s) is/are:\t""${R1[$i]}"",""${R2[$i]}" ;
-    echo -e "--Output directory is:\t""${outdir}" ;
+    echo -e "- Input file(s) are:\t""${R1[$i]}"",""${R2[$i]}" ;
+    echo -e "- Processing in Paired-end mode" ;
+    echo -e "- Output directory is:\t""${outdir}" ;
     mkdir -p "$outdir" ;
 
 
@@ -142,9 +162,65 @@ tar -czvf $outdir.salmon_quant.tar.gz -C $outdir .
 rm -rf $outdir
 
     echo $outdir": Done." ;
+  done
+ else
+ echo "Paired-end files detected but count of Read 1 ("${#R1[@]}") didn't match count of Read 2 ("${#R2[@]}")"
+ echo ""${#RU[@]}" possible single-end file(s) detected"
+ fi
+fi
+
+if [[ "${#R1[@]}" -eq "${#R2[@]}" ]]; then
+ if [[ "${#RU[@]}" > 0 ]]; then
+  for (( i=0; i<"${#RU[@]}"; i++ )); do
+
+ outdir=$(basename ${RU[$i]})
+ outdir=${outdir/%.fastq.gz}
+ outdir=${outdir/%.fq.gz}
+
+    echo -e "\n" ;
+    echo -e "- Input file is:\t""${RU[$i]}" ;
+    echo -e "- Processing in Single-end mode" ;
+    echo -e "- Output directory is:\t""${outdir}" ;
+    mkdir -p "$outdir" ;
+
+
+params=()
+[[ $resampling == "BOOT" ]] && params+=(--numBootstraps=$bootstraps)
+[[ $resampling == "GIBB" ]] && params+=(--numGibbsSamples=$bootstraps)
+[[ $validateMappings == true ]] && params+=(--validateMappings)
+[[ $seqBias == true ]] && params+=(--seqBias)
+[[ $gcBias == true ]] && params+=(--gcBias)
+[[ $posBias == true ]] && params+=(--posBias)
+[[ $BOWTIE == "BT2" ]] && params+=(--mimicBT2)
+[[ $BOWTIE == "Strict" ]] && params+=(--mimicStrictBT2)
+[[ $recoverOrphans == true ]] && params+=(--recoverOrphans)
+[[ $hardFilter == true ]] && params+=(--hardFilter)
+[[ $allowDovetail == true ]] && params+=(--allowDovetail)
+[[ $dumpEq == true ]] && params+=(--dumpEq)
+[[ $reduceGCMemory == true ]] && params+=(--reduceGCMemory)
+[[ $rangeFactor == true ]] && params+=(--rangeFactorizationBins=$factorbins)
+[[ $biasSamp == true ]] && params+=(--biasSpeedSamp=$bias)
+
+# [[ $CONDITION == true ]] && params+=(--param)
+
+salmon quant \
+      --no-version-check \
+      --index="salmon_index" \
+      --threads=$threads \
+      --libType=$lib \
+      -r "${RU[$i]}" \
+      "${params[@]}" \
+      --output=$outdir ;
+
+cp $outdir/quant.sf $outdir.quant.sf
+tar -czvf $outdir.salmon_quant.tar.gz -C $outdir .
+rm -rf $outdir
+
+    echo $outdir": Done." ;
  done
-else
-echo "Count of Read 1 ("${#R1[@]}") didn't match count of Read 2 ("${#R2[@]}")"
+fi
+ else
+ echo "Exiting due to mismatched input files"
 fi
 
 rm -rf salmon_index

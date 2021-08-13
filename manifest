@@ -133,11 +133,11 @@ p18_value=
 p1_MODE=IN
 p1_TYPE=FILE
 p1_default_value=
-p1_description=RNA-seq Reads.<br>\n<br>\nReads must be paired end, gzipped and named as follows\:<br>\nRead 1\: SampleID_R1.fastq.gz, SampleID_1.fastq.gz, SampleID_R1.fq.gz, or SampleID_1.fq.gz<br>\nRead 2\: SampleID_R2.fastq.gz, SampleID_2.fastq.gz, SampleID_R2.fq.gz, or SampleID_2.fq.gz<br>\n<br>\nWhere "SampleID" is the same string for both members of each pair.
+p1_description=RNA-seq Reads.<br>\n<br>\Paired-end reads must be gzipped and named as follows\:<br>\nRead 1\: SampleID_R1.fastq.gz, SampleID_1.fastq.gz, SampleID_R1.fq.gz, or SampleID_1.fq.gz<br>\nRead 2\: SampleID_R2.fastq.gz, SampleID_2.fastq.gz, SampleID_R2.fq.gz, or SampleID_2.fq.gz<br>\n<br>\nWhere "SampleID" is the same string for both members of each pair.<br>\nSingle-end reads must not have a _R1/_1 or _R2/_2 suffix before the .fq.gz/.fastq.gz file extension.<br><br>\n<b>Warning:</b> Splitting reads for a single sample across multiple files (eg: SampleA_R1_001.fq.gz, SampleA_R1_002.fq.gz; SampleA_R2_001.fq.gz, SampleA_R2_002.fq.gz;) is not supported.
 p1_fileFormat=.fastq.gz;.fq.gz;fastq.gz;fq.gz
 p1_flag=-r
 p1_name=Reads
-p1_numValues=2+
+p1_numValues=1+
 p1_optional=
 p1_prefix=
 p1_prefix_when_specified=
@@ -159,7 +159,7 @@ p2_value=
 p3_MODE=
 p3_TYPE=TEXT
 p3_default_value=A
-p3_description=The library type of the RNA-seq. This describes the relative orientation of paired end reads. (Default\: automatic inference of library type)\n<br><br>\nCommon Salmon options are described in contrast with equivalent options from other quantification tools.\n<style type\="text/css">\n.tg  {border-collapse\:collapse;border-spacing\:0;}\n.tg td{border-color\:black;border-style\:solid;border-width\:1px;font-family\:Arial, sans-serif;font-size\:12px;}\n.tg th{border-color\:black;border-style\:solid;border-width\:1px;font-family\:Arial, sans-serif;font-size\:12px;\n  font-weight\:normal;}\n.tg .tg-0pky{border-color\:inherit;text-align\:left;vertical-align\:top}\n</style>\n<table class\="tg">\n<tbody>\n  <tr>\n    <th class\="tg-0pky">RSeQC Result (Majority of Reads)</th>\n    <th class\="tg-0pky">No clear majority</th>\n    <th class\="tg-0pky">1++,1--,2+-,2-+</th>\n    <th class\="tg-0pky">1+-,1-+,2++,2--</th>\n  </tr>\n  <tr>\n    <td class\="tg-0pky">Salmon / Sailfish</td>\n    <td class\="tg-0pky">IU</td>\n    <td class\="tg-0pky">ISF</td>\n    <td class\="tg-0pky">ISR</td>\n  </tr>\n  <tr>\n    <td class\="tg-0pky">TopHat / Cufflinks</td>\n    <td class\="tg-0pky">library-type fr-unstranded</td>\n    <td class\="tg-0pky">library-type fr-secondstrand</td>\n    <td class\="tg-0pky">library-type fr-firststrand</td>\n  </tr>\n  <tr>\n    <td class\="tg-0pky">HISAT2</td>\n    <td class\="tg-0pky">default</td>\n    <td class\="tg-0pky">--rna-strandedness FR</td>\n    <td class\="tg-0pky">-rna-strandedness RF</td>\n  </tr>\n  <tr>\n    <td class\="tg-0pky">HTSeq</td>\n    <td class\="tg-0pky">stranded --no</td>\n    <td class\="tg-0pky">stranded --yes</td>\n    <td class\="tg-0pky">stranded --reverse</td>\n  </tr>\n</tbody>\n</table>\n\nSee also\: https\://salmon.readthedocs.io/en/latest/salmon.html\#what-s-this-libtype
+p3_description=The library type of the RNA-seq. This describes the relative orientation of the reads. (Default\: automatic inference of library type)\n<br><br>\nCommon Salmon options are described in contrast with equivalent options from other quantification tools.\n<style type\="text/css">\n.tg  {border-collapse\:collapse;border-spacing\:0;}\n.tg td{border-color\:black;border-style\:solid;border-width\:1px;font-family\:Arial, sans-serif;font-size\:12px;}\n.tg th{border-color\:black;border-style\:solid;border-width\:1px;font-family\:Arial, sans-serif;font-size\:12px;\n  font-weight\:normal;}\n.tg .tg-0pky{border-color\:inherit;text-align\:left;vertical-align\:top}\n</style>\n<table class\="tg">\n<tbody>\n  <tr>\n    <th class\="tg-0pky">RSeQC Result (Majority of Reads)</th>\n    <th class\="tg-0pky">No clear majority</th>\n    <th class\="tg-0pky">1++,1--,2+-,2-+</th>\n    <th class\="tg-0pky">1+-,1-+,2++,2--</th>\n  </tr>\n  <tr>\n    <td class\="tg-0pky">Salmon / Sailfish</td>\n    <td class\="tg-0pky">IU</td>\n    <td class\="tg-0pky">ISF</td>\n    <td class\="tg-0pky">ISR</td>\n  </tr>\n  <tr>\n    <td class\="tg-0pky">TopHat / Cufflinks</td>\n    <td class\="tg-0pky">library-type fr-unstranded</td>\n    <td class\="tg-0pky">library-type fr-secondstrand</td>\n    <td class\="tg-0pky">library-type fr-firststrand</td>\n  </tr>\n  <tr>\n    <td class\="tg-0pky">HISAT2</td>\n    <td class\="tg-0pky">default</td>\n    <td class\="tg-0pky">--rna-strandedness FR</td>\n    <td class\="tg-0pky">-rna-strandedness RF</td>\n  </tr>\n  <tr>\n    <td class\="tg-0pky">HTSeq</td>\n    <td class\="tg-0pky">stranded --no</td>\n    <td class\="tg-0pky">stranded --yes</td>\n    <td class\="tg-0pky">stranded --reverse</td>\n  </tr>\n</tbody>\n</table>\n\nSee also\: https\://salmon.readthedocs.io/en/latest/salmon.html\#what-s-this-libtype
 p3_fileFormat=
 p3_flag=-l
 p3_name=Library.Type
@@ -168,7 +168,7 @@ p3_optional=
 p3_prefix=
 p3_prefix_when_specified=
 p3_type=java.lang.String
-p3_value=A\=Automatic Detection;ISF\=ISF (Inward, read 1 from the forward strand);ISR\=ISR (Inward, read 1 from the reverse strand);IU\=IU (Inward, Unstranded);OSF\=OSF (Outward, read 1 from the forward strand);OSR\=OSR (Outward, read 1 from the reverse strand);OU\=OU (Outward, Unstranded)
+p3_value=A\=Automatic Detection;ISF\=ISF (Inward, read 1 from the forward strand);ISR\=ISR (Inward, read 1 from the reverse strand);IU\=IU (Inward, Unstranded);OSF\=OSF (Outward, read 1 from the forward strand);OSR\=OSR (Outward, read 1 from the reverse strand);OU\=OU (Outward, Unstranded);SF\=SF (Single-End, read 1 from the forward strand);SR\=SR (Single-End, read 1 from the reverse strand);U\=U (Single-End, Unstranded)
 p4_MODE=
 p4_TYPE=TEXT
 p4_default_value=BOOT
