@@ -121,9 +121,9 @@ if [[ "${#R1[@]}" > 0 ]]; then
  outdir=${outdir/%_R1_001.fq.gz}
 
     echo -e "\n" ;
-    echo -e "--Input file(s) are:\t""${R1[$i]}"",""${R2[$i]}" ;
-    echo -e "--Processing in Paired-end mode" ;
-    echo -e "--Output directory is:\t""${outdir}" ;
+    echo -e "- Input file(s) are:\t""${R1[$i]}"",""${R2[$i]}" ;
+    echo -e "- Processing in Paired-end mode" ;
+    echo -e "- Output directory is:\t""${outdir}" ;
     mkdir -p "$outdir" ;
 
 
@@ -177,9 +177,9 @@ if [[ "${#R1[@]}" -eq "${#R2[@]}" ]]; then
  outdir=${outdir/%.fq.gz}
 
     echo -e "\n" ;
-    echo -e "--Input file is:\t""${RU[$i]}" ;
-    echo -e "--Processing in Single-end mode" ;
-    echo -e "--Output directory is:\t""${outdir}" ;
+    echo -e "- Input file is:\t""${RU[$i]}" ;
+    echo -e "- Processing in Single-end mode" ;
+    echo -e "- Output directory is:\t""${outdir}" ;
     mkdir -p "$outdir" ;
 
 
