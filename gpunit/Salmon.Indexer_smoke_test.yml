@@ -25,4 +25,4 @@ assertions:
         SRR1515119_50k.quant.sf: !!null
             #diff is useful for development, but will turn up small differences in Effective Length & TPM due to random number generator variance.
             #diff: "output/SRR1515119_50k.quant.sf"
-        SRR1515119_50k_salmon_quant.tar.gz: !!null
+        SRR1515119_50k.salmon_quant.tar.gz: !!null
