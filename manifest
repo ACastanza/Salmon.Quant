@@ -251,7 +251,7 @@ p9_prefix_when_specified=
 p9_type=java.lang.String
 p9_value=off\=off;BT2\=mimicBT2;Strict\=mimicStrictBT2
 privacy=public
-quality=development
+quality=preproduction
 taskDoc=Salmon.Quant.pdf
 taskType=rna-seq
 userid=acastanza
