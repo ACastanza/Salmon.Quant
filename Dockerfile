@@ -1,5 +1,5 @@
 ### copyright 2017-2021 Regents of the University of California and the Broad Institute. All rights reserved.
-FROM genepattern/salmon-quant\:beta
+FROM combinelab/salmon\:1.5.2
 
 MAINTAINER Barbara Hill <bhill@broadinstitute.org>
 
