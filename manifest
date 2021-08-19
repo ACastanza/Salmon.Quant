@@ -10,6 +10,8 @@ description=Perform transcript-level quantification of RNA-seq data using Salmon
 fileFormat=.quant.sf;.tar.gz;gz;sf
 src.repo=https://github.com/genepattern/Salmon.Quant/tree/v0.5
 job.docker.image=genepattern/salmon-quant:beta
+job.memory:16Gb
+job.cpuCount:3
 language=any
 name=Salmon.Quant
 os=any
