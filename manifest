@@ -1,14 +1,15 @@
 #Salmon.Quant
 #Mon Feb 01 23:32:55 UTC 2021
 JVMLevel=
-LSID=urn:lsid:genepattern.org:module.analysis:00420:0.1
+LSID=urn:lsid:genepattern.org:module.analysis:00420:0.5
 author=Anthony S. Castanza;UCSD-MesirovLab
 categories=rna-seq
 commandLine=<libdir>salmon_quant.sh -r <Reads> -i <Transcriptome.Index> -l <Library.Type> -e <Sampling> -n <N.Sampling> -s <seqBias> -g <gcBias> -p <posBias> -t <Mimic.Bowtie> -o <Recover.Orphans> -h <Hard.Filter> -d <Allow.Dovetail> -q <Dump.EQ> -m <reduce.GC.Memory> -f <Range.Factorization> -c <Range.Factorization.Bins> -b <biasSpeedSamp> -a <biasSpeedSamp.Factor> -j <job.cpuCount>
 cpuType=any
 description=Perform transcript-level quantification of RNA-seq data using Salmon (version 1.5.2).<br>\n\nSee\: <a href\="https\://salmon.readthedocs.io/en/latest/salmon.html\#using-salmon" target\="_blank">The Salmon User Guide</a>\nfor detailed usage guidelines.
 fileFormat=.quant.sf;.tar.gz;gz;sf
-job.docker.image=combinelab/salmon\:1.5.2
+src.repo=https://github.com/genepattern/Salmon.Quant/tree/v0.5
+job.docker.image=genepattern/salmon-quant:beta
 language=any
 name=Salmon.Quant
 os=any
@@ -252,4 +253,4 @@ quality=development
 taskDoc=Salmon.Quant.pdf
 taskType=rna-seq
 userid=acastanza
-version=Salmon 1.5.2
+version=Salmon 1.5.2 - beta release
