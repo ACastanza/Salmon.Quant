@@ -1,14 +1,17 @@
 #Salmon.Quant
-#Mon Feb 01 23:32:55 UTC 2021
+#Tue Aug 24 20:32:33 UTC 2021
 JVMLevel=
-LSID=urn\:lsid\:8080.gpserver.ip-172-31-26-71.ip-172-31-26-71.ec2.internal\:genepatternmodules\:2991\:3.1
+LSID=urn\:lsid\:genepattern.org\:module.analysis\:00420\:0.7
 author=Anthony S. Castanza;UCSD-MesirovLab
 categories=rna-seq
 commandLine=<libdir>salmon_quant.sh -r <Reads> -i <Transcriptome.Index> -l <Library.Type> -e <Sampling> -n <N.Sampling> -s <seqBias> -g <gcBias> -p <posBias> -t <Mimic.Bowtie> -o <Recover.Orphans> -h <Hard.Filter> -d <Allow.Dovetail> -q <Dump.EQ> -m <reduce.GC.Memory> -f <Range.Factorization> -c <Range.Factorization.Bins> -b <biasSpeedSamp> -a <biasSpeedSamp.Factor> -j <job.cpuCount>
 cpuType=any
 description=Perform transcript-level quantification of RNA-seq data using Salmon (version 1.5.2).<br>\n\nSee\: <a href\="https\://salmon.readthedocs.io/en/latest/salmon.html\#using-salmon" target\="_blank">The Salmon User Guide</a>\nfor detailed usage guidelines.
+documentationUrl=
 fileFormat=.quant.sf;.tar.gz;gz;sf
-job.docker.image=combinelab/salmon\:1.5.2
+job.cpuCount=3
+job.docker.image=genepattern/salmon-quant\:beta
+job.memory=16Gb
 language=any
 name=Salmon.Quant
 os=any
@@ -133,7 +136,7 @@ p18_value=
 p1_MODE=IN
 p1_TYPE=FILE
 p1_default_value=
-p1_description=RNA-seq Reads.<br>\n<br>\Paired-end reads must be gzipped and named as follows\:<br>\nRead 1\: SampleID_R1.fastq.gz, SampleID_1.fastq.gz, SampleID_R1.fq.gz, or SampleID_1.fq.gz<br>\nRead 2\: SampleID_R2.fastq.gz, SampleID_2.fastq.gz, SampleID_R2.fq.gz, or SampleID_2.fq.gz<br>\nWhere "SampleID" is the same string for both members of each pair.<br>\n<br>\nSingle-end reads must not have a _R1/_1 or _R2/_2 suffix before the .fq.gz/.fastq.gz file extension.<br><br>\n<b>Warning:</b> Splitting reads for a single sample across multiple files (eg: SampleA_R1_001.fq.gz, SampleA_R1_002.fq.gz; SampleA_R2_001.fq.gz, SampleA_R2_002.fq.gz;) is not supported.
+p1_description=RNA-seq Reads.<br>\n<br>Paired-end reads must be gzipped and named as follows\:<br>\nRead 1\: SampleID_R1.fastq.gz, SampleID_1.fastq.gz, SampleID_R1.fq.gz, or SampleID_1.fq.gz<br>\nRead 2\: SampleID_R2.fastq.gz, SampleID_2.fastq.gz, SampleID_R2.fq.gz, or SampleID_2.fq.gz<br>\nWhere "SampleID" is the same string for both members of each pair.<br>\n<br>\nSingle-end reads must not have a _R1/_1 or _R2/_2 suffix before the .fq.gz/.fastq.gz file extension.<br><br>\n<b>Warning\:</b> Splitting reads for a single sample across multiple files (eg\: SampleA_R1_001.fq.gz, SampleA_R1_002.fq.gz; SampleA_R2_001.fq.gz, SampleA_R2_002.fq.gz;) is not supported.
 p1_fileFormat=.fastq.gz;.fq.gz;fastq.gz;fq.gz
 p1_flag=-r
 p1_name=Reads
@@ -145,6 +148,7 @@ p1_type=java.io.File
 p1_value=
 p2_MODE=IN
 p2_TYPE=FILE
+p2_choices=https\://datasets-genepattern-org.s3.amazonaws.com/data/test_data/Salmon/gencode.v37.annotation.k31.salmon_full_decoy_index.tar.gz\=Human_Gencode_v37_Kmer31_Full_Decoy_Index;https\://datasets-genepattern-org.s3.amazonaws.com/data/test_data/Salmon/gencode.vM26.annotation.k31.salmon_full_decoy_index.tar.gz\=Mouse_Gencode_vM26_Kmer31_Full_Decoy_Index
 p2_default_value=
 p2_description=An Indexed transcriptome created with `Salmon Indexer`.<br>\nMust be in .tar.gz format.
 p2_fileFormat=.tar.gz;tar.gz
@@ -248,8 +252,10 @@ p9_prefix_when_specified=
 p9_type=java.lang.String
 p9_value=off\=off;BT2\=mimicBT2;Strict\=mimicStrictBT2
 privacy=public
-quality=development
+publicationDate=08/19/2021 18\:18 
+quality=preproduction
+src.repo=https\://github.com/genepattern/Salmon.Quant/tree/v0.7
 taskDoc=Salmon.Quant.pdf
 taskType=rna-seq
 userid=acastanza
-version=Salmon 1.5.2
+version=Salmon 1.5.2 - beta release

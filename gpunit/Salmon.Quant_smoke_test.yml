@@ -1,0 +1,28 @@
+name: "Salmon.Quant - Basic smoke test"
+module: Salmon.Quant
+params:
+    Reads: "https://datasets-genepattern-org.s3.amazonaws.com/data/module_support_files/Kallisto/test_data/SRR1515119_50k.fastq.gz"
+    Transcriptome.Index: "https://datasets-genepattern-org.s3.amazonaws.com/data/test_data/Salmon/Drosophila_melanogaster.BDGP6.32.103.k31.salmon_full_decoy_index.tar.gz"
+    Library.Type: "Automatic Detection"
+    Sampling: "None"
+    seqBias: "TRUE"
+    gcBias: "TRUE"
+    posBias: "TRUE"
+    N.Sampling: "0"
+    Mimic.Bowtie: "off"
+    Recover.Orphans: "FALSE"
+    Hard.Filter: "FALSE"
+    Allow.Dovetail: "FALSE"
+    Dump.EQ: "FALSE"
+    reduce.GC.Memory: "FALSE"
+    Range.Factorization: "FALSE"
+    Range.Factorization.Bins: "4"
+    biasSpeedSamp: "FALSE"
+    biasSpeedSamp.Factor: "5"
+assertions:
+    jobStatus: success
+    files:
+        SRR1515119_50k.quant.sf: !!null
+            #diff is useful for development, but will turn up small differences in Effective Length & TPM due to random number generator variance.
+            #diff: "output/SRR1515119_50k.quant.sf"
+        SRR1515119_50k.salmon_quant.tar.gz: !!null
