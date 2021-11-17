@@ -254,8 +254,8 @@ p9_value=off\=off;BT2\=mimicBT2;Strict\=mimicStrictBT2
 privacy=public
 publicationDate=08/19/2021 18\:18 
 quality=preproduction
-src.repo=https\://github.com/genepattern/Salmon.Quant/tree/v0.7
+src.repo=https\://github.com/genepattern/Salmon.Quant/tree/v0.8
 taskDoc=Salmon.Quant.pdf
 taskType=rna-seq
 userid=acastanza
-version=Salmon 1.5.2 - beta release
+version=Bug fix for broken switch between modes - beta update
