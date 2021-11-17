@@ -91,7 +91,7 @@ done
 # Process Input files
 
  Rall=($(grep -E '.fastq.gz|.fastq.gz|.fq.gz|.fq.gz' $infile | sort))
- Rtest=${Rall[@]}
+ Rtest=(${Rall[@]})
  R1=($(grep -E '_R1.fastq.gz|_1.fastq.gz|_R1.fq.gz|_1.fq.gz|_R1_' $infile | sort))
  R2=($(grep -E '_R2.fastq.gz|_2.fastq.gz|_R2.fq.gz|_2.fq.gz|_R2_' $infile | sort))
  Rpaired=("${R1[@]}" "${R2[@]}")
