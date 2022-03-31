@@ -6,11 +6,11 @@ author=Anthony S. Castanza;UCSD-MesirovLab
 categories=rna-seq
 commandLine=<libdir>salmon_quant.sh -r <Reads> -i <Transcriptome.Index> -l <Library.Type> -e <Sampling> -n <N.Sampling> -s <seqBias> -g <gcBias> -p <posBias> -t <Mimic.Bowtie> -o <Recover.Orphans> -h <Hard.Filter> -d <Allow.Dovetail> -q <Dump.EQ> -m <reduce.GC.Memory> -f <Range.Factorization> -c <Range.Factorization.Bins> -b <biasSpeedSamp> -a <biasSpeedSamp.Factor> -j <job.cpuCount>
 cpuType=any
-description=Perform transcript-level quantification of RNA-seq data using Salmon (version 1.5.2).<br>\n\nSee\: <a href\="https\://salmon.readthedocs.io/en/latest/salmon.html\#using-salmon" target\="_blank">The Salmon User Guide</a>\nfor detailed usage guidelines.
+description=Perform transcript-level quantification of RNA-seq data using Salmon (version 1.6.0).<br>\n\nSee\: <a href\="https\://salmon.readthedocs.io/en/latest/salmon.html\#using-salmon" target\="_blank">The Salmon User Guide</a>\nfor detailed usage guidelines.
 documentationUrl=
 fileFormat=.quant.sf;.tar.gz;gz;sf
 job.cpuCount=3
-job.docker.image=genepattern/salmon-quant\:beta
+job.docker.image=genepattern/salmon-quant\:beta_1.6.0
 job.memory=16Gb
 job.walltime=
 language=any
