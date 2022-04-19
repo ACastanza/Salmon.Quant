@@ -1,7 +1,7 @@
 #Salmon.Quant
-#Tue Aug 24 20:32:33 UTC 2021
+#Wed Mar 30 19:25:12 UTC 2022
 JVMLevel=
-LSID=urn\:lsid\:genepattern.org\:module.analysis\:00420\:0.7
+LSID=urn\:lsid\:genepattern.org\:module.analysis\:00420\:0.8.1
 author=Anthony S. Castanza;UCSD-MesirovLab
 categories=rna-seq
 commandLine=<libdir>salmon_quant.sh -r <Reads> -i <Transcriptome.Index> -l <Library.Type> -e <Sampling> -n <N.Sampling> -s <seqBias> -g <gcBias> -p <posBias> -t <Mimic.Bowtie> -o <Recover.Orphans> -h <Hard.Filter> -d <Allow.Dovetail> -q <Dump.EQ> -m <reduce.GC.Memory> -f <Range.Factorization> -c <Range.Factorization.Bins> -b <biasSpeedSamp> -a <biasSpeedSamp.Factor> -j <job.cpuCount>
@@ -10,8 +10,9 @@ description=Perform transcript-level quantification of RNA-seq data using Salmon
 documentationUrl=
 fileFormat=.quant.sf;.tar.gz;gz;sf
 job.cpuCount=3
-job.docker.image=genepattern/salmon-quant\:beta
+job.docker.image=genepattern/salmon-quant\:beta_1.6.0
 job.memory=16Gb
+job.walltime=
 language=any
 name=Salmon.Quant
 os=any
@@ -148,8 +149,8 @@ p1_type=java.io.File
 p1_value=
 p2_MODE=IN
 p2_TYPE=FILE
-p2_choices=https\://datasets-genepattern-org.s3.amazonaws.com/data/test_data/Salmon/gencode.v37.annotation.k31.salmon_full_decoy_index.tar.gz\=Human_Gencode_v37_Kmer31_Full_Decoy_Index;https\://datasets-genepattern-org.s3.amazonaws.com/data/test_data/Salmon/gencode.vM26.annotation.k31.salmon_full_decoy_index.tar.gz\=Mouse_Gencode_vM26_Kmer31_Full_Decoy_Index
-p2_default_value=
+p2_choices=https\://datasets.genepattern.org/data/module_support_files/Salmon.Quant/gencode.v39.annotation.k31.salmon_full_decoy_index.tar.gz\=Human_Gencode_v39_Kmer31_Full_Decoy;https\://datasets-genepattern-org.s3.amazonaws.com/data/test_data/Salmon/gencode.v37.annotation.k31.salmon_full_decoy_index.tar.gz\=Human_Gencode_v37_Kmer31_Full_Decoy_Index;https\://datasets.genepattern.org/data/module_support_files/Salmon.Quant/gencode.vM28.annotation.k31.salmon_full_decoy_index.tar.gz\=Mouse_Gencode_vM28_Kmer31_Full_Decoy;https\://datasets-genepattern-org.s3.amazonaws.com/data/test_data/Salmon/gencode.vM26.annotation.k31.salmon_full_decoy_index.tar.gz\=Mouse_Gencode_vM26_Kmer31_Full_Decoy_Index
+p2_default_value=https\://datasets.genepattern.org/data/module_support_files/Salmon.Quant/gencode.v39.annotation.k31.salmon_full_decoy_index.tar.gz
 p2_description=An Indexed transcriptome created with `Salmon Indexer`.<br>\nMust be in .tar.gz format.
 p2_fileFormat=.tar.gz;tar.gz
 p2_flag=-i
@@ -252,10 +253,10 @@ p9_prefix_when_specified=
 p9_type=java.lang.String
 p9_value=off\=off;BT2\=mimicBT2;Strict\=mimicStrictBT2
 privacy=public
-publicationDate=08/19/2021 18\:18 
+publicationDate=11/17/2021 10\:52 
 quality=preproduction
-src.repo=https\://github.com/genepattern/Salmon.Quant/tree/v0.7
+src.repo=https\://github.com/genepattern/Salmon.Quant/tree/v0.9
 taskDoc=Salmon.Quant.pdf
 taskType=rna-seq
 userid=acastanza
-version=Salmon 1.6.0 - beta release
+version=Update to Salmon v1.6.0 and add Gencode Human release v39 and Mouse release vM28- beta update
